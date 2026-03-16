@@ -1,0 +1,12 @@
+[submodule "Hardware"]
+	path = Hardware
+	url = git@github.com:MaxNoragami/gms-hardware.git
+	branch = main
+[submodule "Backend"]
+	path = Backend
+	url = git@github.com:mcittkmims/gms-backend.git
+	branch = main
+[submodule "Frontend"]
+	path = Frontend
+	url = git@github.com:MaxNoragami/gms-frontend.git
+	branch = main

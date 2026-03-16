@@ -1,0 +1,37 @@
+name: Update Submodule
+
+on:
+  repository_dispatch:
+    types: [update-submodule]
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Update submodule
+        run: |
+          SUBMODULE="${{ github.event.client_payload.submodule }}"
+          echo "Updating $SUBMODULE"
+          git submodule update --remote $SUBMODULE
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add ${{ github.event.client_payload.submodule }}
+
+          git diff --quiet && git diff --staged --quiet || \
+          git commit -m "Update ${{ github.event.client_payload.submodule }} submodule"
+
+      - name: Push
+        run: git push
