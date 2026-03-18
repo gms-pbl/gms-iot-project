@@ -1,0 +1,12 @@
+[submodule "firmware"]
+	path = firmware
+	url = git@github.com:gms-pbl/gms-firmware.git
+	branch = main
+[submodule "backend"]
+	path = backend
+	url = git@github.com:gms-pbl/gms-backend.git
+	branch = main
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:gms-pbl/gms-frontend.git
+	branch = main
